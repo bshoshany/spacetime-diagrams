@@ -1,0 +1,1309 @@
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{"Get", "[", 
+  RowBox[{"\"\<SpacetimeDiagrams.m\>\"", ",", 
+   RowBox[{"Path", "\[Rule]", 
+    RowBox[{"NotebookDirectory", "[", "]"}]}]}], "]"}]], "Input",
+ CellLabel->"In[1]:=",ExpressionUUID->"e08d4dee-7a31-443a-8a21-58d976084333"],
+
+Cell[BoxData[
+ DynamicModuleBox[{$CellContext`ArrivalTime$$ = 0, $CellContext`ArrowSize$$ = 
+  0.03, $CellContext`BarnColor$$ = RGBColor[
+  0.6, 0.4, 0.2], $CellContext`BarnLength$$ = 
+  2, $CellContext`BarnPoleColor$$ = GrayLevel[
+  0.5], $CellContext`BarnPoleLength$$ = 3, $CellContext`BarnPoleTime$$ = 
+  0, $CellContext`ColorButton$$, $CellContext`DiagramRange$$ = 
+  2, $CellContext`DiagramSize$$ = 
+  700, $CellContext`DivideNoZero$$, $CellContext`DrawClock$$, \
+$CellContext`FutureColor$$ = RGBColor[1, 1, 0], $CellContext`FutureOpacity$$ =
+   0.3, $CellContext`FutureShow$$ = False, $CellContext`GridNumber$$ = 
+  8, $CellContext`GridOpacity$$ = 0.5, $CellContext`GridSColor$$ = GrayLevel[
+  0.5], $CellContext`GridSPrimeColorX$$ = RGBColor[
+  0, 0, 1], $CellContext`GridSPrimeColorT$$ = RGBColor[
+  1, 0.5, 0], $CellContext`GridSShow$$ = True, $CellContext`GridSPrimeShow$$ =
+   False, $CellContext`GridSPrimeTicksShow$$ = 
+  False, $CellContext`LabelMultiplier$$ = 1.04, $CellContext`LegendSize$$ = 
+  25, $CellContext`LengthContColor$$ = RGBColor[
+  0, 0.5, 0], $CellContext`LengthContDistance$$ = 
+  3, $CellContext`LetterSize$$ = 16, $CellContext`LightConeEdgeColor$$ = 
+  RGBColor[1, 0.5, 0.5], $CellContext`LightConeEdgeShow$$ = 
+  False, $CellContext`LightConeInteriorColor$$ = RGBColor[
+  1, 0.5, 0.5], $CellContext`LightConeInteriorOpacity$$ = 
+  0.3, $CellContext`LightConeInteriorShow$$ = 
+  False, $CellContext`LorentzFactor$$ = 
+  1, $CellContext`LorentzTransform$$, $CellContext`LorentzTransformInverse$$, \
+$CellContext`PadNumber$$, $CellContext`PadNumberPositive$$, \
+$CellContext`Path1V$$ = 0, $CellContext`Path2V$$ = 
+  0, $CellContext`SimultaneityColor$$ = RGBColor[
+  0.5, 0, 0.5], $CellContext`SimultaneitySep$$ = 2, $CellContext`Spaces$$ = 
+  "     ", $CellContext`SPrimeT$$ = 0, $CellContext`SPrimeV$$ = 
+  0, $CellContext`SPrimeX$$ = 0, $CellContext`TimeDilationColor$$ = RGBColor[
+  1, 0, 0], $CellContext`TimeDilationDuration$$ = 
+  3, $CellContext`TachyonColor$$ = RGBColor[
+  0, 0, 1], $CellContext`TwinColor$$ = RGBColor[
+  0, 0.75, 1, 1], $CellContext`TwinDistance$$ = 3, $CellContext`WhichDemo$$ = 
+  "No Demo", $CellContext`WhichObserver$$ = 
+  0, $CellContext`UpdateSecondPath$$}, 
+  TagBox[
+   TagBox[GridBox[{
+      {
+       DynamicBox[ToBoxes[
+         Style[
+          Grid[{{
+             Row[{
+               Setter[
+                Dynamic[$CellContext`WhichDemo$$], "No Demo"], " ", 
+               Setter[
+                Dynamic[$CellContext`WhichDemo$$], "Clocks"], " ", 
+               Setter[
+                Dynamic[$CellContext`WhichDemo$$], "Simultaneity"], " ", 
+               Setter[
+                Dynamic[$CellContext`WhichDemo$$], "Time Dilation"], " ", 
+               Setter[
+                Dynamic[$CellContext`WhichDemo$$], "Length Contraction"], " ", 
+               Setter[
+                
+                Dynamic[$CellContext`WhichDemo$$, ($CellContext`WhichDemo$$ = \
+#; {$CellContext`SPrimeX$$, $CellContext`SPrimeT$$} = \
+{$CellContext`TwinDistance$$ \
+($CellContext`DiagramRange$$/$CellContext`GridNumber$$), 0}; Null)& ], 
+                "Twin \"Paradox\""], " ", 
+               Setter[
+                
+                Dynamic[$CellContext`WhichDemo$$, ($CellContext`WhichDemo$$ = \
+#; {$CellContext`SPrimeX$$, $CellContext`SPrimeT$$} = {0, 0}; Null)& ], 
+                "Barn \"Paradox\""], " ", 
+               Setter[
+                
+                Dynamic[$CellContext`WhichDemo$$, ($CellContext`WhichDemo$$ = \
+#; $CellContext`SPrimeT$$ = Max[$CellContext`SPrimeT$$, 0]; Null)& ], 
+                "Time Travel"]}]}, {
+             Row[{
+               $CellContext`ColorButton$$[$CellContext`GridSShow$$, \
+$CellContext`GridSColor$$, "S grid"], " ", 
+               $CellContext`ColorButton$$[$CellContext`GridSPrimeShow$$, \
+{$CellContext`GridSPrimeColorX$$, $CellContext`GridSPrimeColorT$$}, 
+                "S' grid"], " ", 
+               $CellContext`ColorButton$$[$CellContext`GridSPrimeTicksShow$$, 
+                Black, "S' ticks"], " ", 
+               $CellContext`ColorButton$$[$CellContext`FutureShow$$, \
+$CellContext`FutureColor$$, "S' future region"], " ", 
+               $CellContext`ColorButton$$[$CellContext`LightConeEdgeShow$$, \
+$CellContext`LightConeEdgeColor$$, "Cone edges"], " ", 
+               $CellContext`ColorButton$$[$CellContext`LightConeInteriorShow$$\
+, $CellContext`LightConeInteriorColor$$, "Cone interiors"]}]}, {
+             Row[{"S': (t = ", 
+               Dynamic[
+                $CellContext`PadNumber$$[$CellContext`SPrimeT$$ \
+($CellContext`GridNumber$$/$CellContext`DiagramRange$$)]], ", x = ", 
+               Dynamic[
+                $CellContext`PadNumber$$[$CellContext`SPrimeX$$ \
+($CellContext`GridNumber$$/$CellContext`DiagramRange$$)]], ")", 
+               Button[
+               "Reset", $CellContext`SPrimeT$$ = ($CellContext`SPrimeX$$ = 
+                 0)], $CellContext`Spaces$$, "v = ", 
+               Dynamic[
+                $CellContext`PadNumber$$[$CellContext`SPrimeV$$]], "c ", 
+               Button[
+               "Reset", $CellContext`SPrimeV$$ = 
+                 0; $CellContext`LorentzFactor$$ = 1], $CellContext`Spaces$$, 
+               "\[Gamma] = ", 
+               Dynamic[
+                $CellContext`PadNumberPositive$$[$CellContext`LorentzFactor$$]\
+]}]}, 
+            If[$CellContext`WhichDemo$$ != "No Demo", {
+              Row[{
+                Setter[
+                 Dynamic[$CellContext`WhichObserver$$], 0, 
+                 
+                 If[$CellContext`WhichDemo$$ != "Simultaneity", 
+                  "View from the perspective of S", 
+                  "Events simultaneous in S"]], " ", 
+                Setter[
+                 Dynamic[$CellContext`WhichObserver$$], 1, 
+                 
+                 If[$CellContext`WhichDemo$$ != "Simultaneity", 
+                  "View from the perspective of S'", 
+                  "Events simultaneous in S'"]]}]}, Nothing], 
+            If[$CellContext`WhichDemo$$ == "Simultaneity", {
+              Style[
+               Row[{
+                 Row[
+                  If[$CellContext`WhichObserver$$ == 0, {
+                    Subscript["x", "A"], " = ", 
+                    Dynamic[
+                    $CellContext`PadNumber$$[-$CellContext`SimultaneitySep$$]]\
+, ", ", 
+                    Subscript["x", "B"], " = ", 
+                    Dynamic[
+                    $CellContext`PadNumber$$[$CellContext`SimultaneitySep$$]],\
+ $CellContext`Spaces$$, 
+                    Subscript["t", "A"], " = ", 
+                    Subscript["t", "B"], " = 0"}, {
+                    Subscript["x", "A"], " = ", 
+                    Dynamic[
+                    $CellContext`PadNumber$$[(Part[
+                    $CellContext`LorentzTransform$$[{(-$CellContext`\
+SimultaneitySep$$) ($CellContext`DiagramRange$$/$CellContext`GridNumber$$), 
+                    0}], 1]/$CellContext`DiagramRange$$) \
+$CellContext`GridNumber$$]], ", ", 
+                    Subscript["x", "B"], " = ", 
+                    Dynamic[
+                    $CellContext`PadNumber$$[(Part[
+                    $CellContext`LorentzTransform$$[{$CellContext`\
+SimultaneitySep$$ ($CellContext`DiagramRange$$/$CellContext`GridNumber$$), 
+                    0}], 1]/$CellContext`DiagramRange$$) \
+$CellContext`GridNumber$$]], $CellContext`Spaces$$, 
+                    Subscript["t", "A"], " = ", 
+                    Dynamic[
+                    $CellContext`PadNumber$$[(Part[
+                    $CellContext`LorentzTransform$$[{(-$CellContext`\
+SimultaneitySep$$) ($CellContext`DiagramRange$$/$CellContext`GridNumber$$), 
+                    0}], 
+                    2]/$CellContext`DiagramRange$$) \
+$CellContext`GridNumber$$]], ", ", 
+                    Subscript["t", "B"], " = ", 
+                    Dynamic[
+                    $CellContext`PadNumber$$[(Part[
+                    $CellContext`LorentzTransform$$[{$CellContext`\
+SimultaneitySep$$ ($CellContext`DiagramRange$$/$CellContext`GridNumber$$), 
+                    0}], 2]/$CellContext`DiagramRange$$) \
+$CellContext`GridNumber$$]]}]], $CellContext`Spaces$$, 
+                 Row[
+                  If[$CellContext`WhichObserver$$ == 0, {
+                    Subsuperscript["x", "A", "\[Prime]"], " = ", 
+                    Dynamic[
+                    $CellContext`PadNumber$$[(Part[
+                    $CellContext`LorentzTransformInverse$$[{(-$CellContext`\
+SimultaneitySep$$) ($CellContext`DiagramRange$$/$CellContext`GridNumber$$), 
+                    0}], 1]/$CellContext`DiagramRange$$) \
+$CellContext`GridNumber$$]], ", ", 
+                    Subsuperscript["x", "B", "\[Prime]"], " = ", 
+                    Dynamic[
+                    $CellContext`PadNumber$$[(Part[
+                    $CellContext`LorentzTransformInverse$$[{$CellContext`\
+SimultaneitySep$$ ($CellContext`DiagramRange$$/$CellContext`GridNumber$$), 
+                    0}], 1]/$CellContext`DiagramRange$$) \
+$CellContext`GridNumber$$]], $CellContext`Spaces$$, 
+                    Subsuperscript["t", "A", "\[Prime]"], " = ", 
+                    Dynamic[
+                    $CellContext`PadNumber$$[(Part[
+                    $CellContext`LorentzTransformInverse$$[{(-$CellContext`\
+SimultaneitySep$$) ($CellContext`DiagramRange$$/$CellContext`GridNumber$$), 
+                    0}], 2]/$CellContext`DiagramRange$$) \
+$CellContext`GridNumber$$]], ", ", 
+                    Subsuperscript["t", "B", "\[Prime]"], " = ", 
+                    Dynamic[
+                    $CellContext`PadNumber$$[(Part[
+                    $CellContext`LorentzTransformInverse$$[{$CellContext`\
+SimultaneitySep$$ ($CellContext`DiagramRange$$/$CellContext`GridNumber$$), 
+                    0}], 2]/$CellContext`DiagramRange$$) \
+$CellContext`GridNumber$$]]}, {
+                    Subsuperscript["x", "A", "\[Prime]"], " = ", 
+                    Dynamic[
+                    $CellContext`PadNumber$$[-$CellContext`SimultaneitySep$$]]\
+, ", ", 
+                    Subsuperscript["x", "B", "\[Prime]"], " = ", 
+                    Dynamic[
+                    $CellContext`PadNumber$$[$CellContext`SimultaneitySep$$]],\
+ $CellContext`Spaces$$, 
+                    Subsuperscript["t", "A", "\[Prime]"], " = ", 
+                    Subsuperscript["t", "B", "\[Prime]"], " = 0"}]]}], 
+               FontColor -> $CellContext`SimultaneityColor$$]}, Nothing], 
+            If[$CellContext`WhichDemo$$ == "Time Dilation", {
+              Style[
+               Row[{"\[CapitalDelta]t = ", 
+                 If[$CellContext`WhichObserver$$ == 0, 
+                  Dynamic[
+                   $CellContext`PadNumberPositive$$[$CellContext`\
+TimeDilationDuration$$ $CellContext`LorentzFactor$$]], 
+                  Dynamic[
+                   $CellContext`PadNumberPositive$$[$CellContext`\
+TimeDilationDuration$$]]], 
+                 
+                 If[$CellContext`WhichObserver$$ == 0, Nothing, 
+                  " (proper time)"], $CellContext`Spaces$$, 
+                 "\[CapitalDelta]t' = ", 
+                 If[$CellContext`WhichObserver$$ == 0, 
+                  Dynamic[
+                   $CellContext`PadNumberPositive$$[$CellContext`\
+TimeDilationDuration$$]], 
+                  Dynamic[
+                   $CellContext`PadNumberPositive$$[$CellContext`\
+TimeDilationDuration$$ $CellContext`LorentzFactor$$]]], 
+                 
+                 If[$CellContext`WhichObserver$$ == 1, Nothing, 
+                  " (proper time)"]}], 
+               FontColor -> $CellContext`TimeDilationColor$$]}, Nothing], 
+            If[$CellContext`WhichDemo$$ == "Length Contraction", {
+              Style[
+               Row[{"\[CapitalDelta]x = ", 
+                 If[$CellContext`WhichObserver$$ == 0, 
+                  Dynamic[
+                   $CellContext`PadNumberPositive$$[$CellContext`\
+LengthContDistance$$/$CellContext`LorentzFactor$$]], 
+                  Dynamic[
+                   $CellContext`PadNumberPositive$$[$CellContext`\
+LengthContDistance$$]]], 
+                 
+                 If[$CellContext`WhichObserver$$ == 0, Nothing, 
+                  " (proper length)"], $CellContext`Spaces$$, 
+                 "\[CapitalDelta]x' = ", 
+                 If[$CellContext`WhichObserver$$ == 0, 
+                  Dynamic[
+                   $CellContext`PadNumberPositive$$[$CellContext`\
+LengthContDistance$$]], 
+                  Dynamic[
+                   $CellContext`PadNumberPositive$$[$CellContext`\
+LengthContDistance$$/$CellContext`LorentzFactor$$]]], 
+                 
+                 If[$CellContext`WhichObserver$$ == 0, " (proper length)", 
+                  Nothing]}], FontColor -> $CellContext`LengthContColor$$]}, 
+             Nothing], 
+            If[$CellContext`WhichDemo$$ == "Twin \"Paradox\"", {
+              Style[
+               Row[{"For each leg of the trip: ", 
+                 Row[
+                  
+                  If[$CellContext`WhichObserver$$ == 0, {
+                   "\[CapitalDelta]x = ", 
+                    $CellContext`PadNumberPositive$$[$CellContext`\
+TwinDistance$$], $CellContext`Spaces$$, "\[CapitalDelta]t = ", 
+                    $CellContext`PadNumberPositive$$[
+                    If[Abs[$CellContext`SPrimeV$$] < 0.01, Infinity, 
+                    
+                    Abs[$CellContext`TwinDistance$$/$CellContext`SPrimeV$$]]],\
+ $CellContext`Spaces$$, "total aging = ", 
+                    $CellContext`PadNumberPositive$$[
+                    If[Abs[$CellContext`SPrimeV$$] < 0.01, Infinity, 
+                    Abs[
+                    2 ($CellContext`TwinDistance$$/$CellContext`SPrimeV$$)]]]}\
+, {"\[CapitalDelta]x' = ", 
+                    $CellContext`PadNumberPositive$$[$CellContext`\
+TwinDistance$$/$CellContext`LorentzFactor$$], $CellContext`Spaces$$, 
+                    "\[CapitalDelta]t' = ", 
+                    $CellContext`PadNumberPositive$$[
+                    If[Abs[$CellContext`SPrimeV$$] < 0.01, Infinity, 
+                    
+                    Abs[($CellContext`TwinDistance$$/$CellContext`SPrimeV$$)/$\
+CellContext`LorentzFactor$$]]], $CellContext`Spaces$$, "total aging = ", 
+                    $CellContext`PadNumberPositive$$[
+                    If[Abs[$CellContext`SPrimeV$$] < 0.01, Infinity, 
+                    Abs[
+                    2 (($CellContext`TwinDistance$$/$CellContext`SPrimeV$$)/$\
+CellContext`LorentzFactor$$)]]]}]]}], FontColor -> $CellContext`TwinColor$$]},
+              Nothing], 
+            If[$CellContext`WhichDemo$$ == "Barn \"Paradox\"", {
+              Style[
+               Row[{"Barn length = ", 
+                 If[$CellContext`WhichObserver$$ == 0, 
+                  $CellContext`PadNumberPositive$$[$CellContext`BarnLength$$], 
+                  $CellContext`PadNumberPositive$$[$CellContext`BarnLength$$/$\
+CellContext`LorentzFactor$$]], $CellContext`Spaces$$, "Pole length = ", 
+                 If[$CellContext`WhichObserver$$ == 0, 
+                  $CellContext`PadNumberPositive$$[$CellContext`\
+BarnPoleLength$$/$CellContext`LorentzFactor$$], 
+                  $CellContext`PadNumberPositive$$[$CellContext`\
+BarnPoleLength$$]], $CellContext`Spaces$$, 
+                 Style[
+                  
+                  If[$CellContext`BarnPoleLength$$/$CellContext`LorentzFactor$\
+$ <= $CellContext`BarnLength$$, "Pole fits!", "Pole doesn't fit!"], Bold]}], 
+               FontColor -> $CellContext`BarnColor$$]}, Nothing], 
+            If[$CellContext`WhichDemo$$ == "Time Travel", {
+              Style[
+               Row[{
+                 Subscript["v", 1], " = ", 
+                 Dynamic[
+                  If[
+                   Or[$CellContext`Path1V$$ === 
+                    ComplexInfinity, $CellContext`Path1V$$ > 99.99], 
+                   "   \[Infinity]   ", 
+                   Row[{
+                    $CellContext`PadNumber$$[$CellContext`Path1V$$], 
+                    "c"}]]], $CellContext`Spaces$$, 
+                 Subscript["v", 2], " = ", 
+                 Dynamic[
+                  If[
+                   
+                   Or[$CellContext`Path2V$$ === 
+                    ComplexInfinity, $CellContext`Path2V$$ > 99.99], 
+                   "   \[Infinity]   ", 
+                   Row[{
+                    $CellContext`PadNumber$$[$CellContext`Path2V$$], 
+                    "c"}]]], $CellContext`Spaces$$, "Arrival time = ", 
+                 Dynamic[
+                  $CellContext`PadNumber$$[$CellContext`ArrivalTime$$]]}], 
+               FontColor -> $CellContext`TachyonColor$$]}, Nothing]}], 
+          FontSize -> 12], StandardForm],
+        ImageSizeCache->{806., {41.36994140625, 47.19005859375}}]},
+      {
+       DynamicBox[ToBoxes[
+         Graphics[{{Black, 
+            Arrowheads[{-$CellContext`ArrowSize$$, $CellContext`ArrowSize$$}], 
+            
+            Arrow[{{-$CellContext`DiagramRange$$, 
+               0}, {$CellContext`DiagramRange$$, 0}}], 
+            
+            Arrow[{{0, -$CellContext`DiagramRange$$}, {
+              0, $CellContext`DiagramRange$$}}]}, {
+            Text[
+             Style[
+             "x", FontSize -> $CellContext`LetterSize$$], \
+{$CellContext`DiagramRange$$ $CellContext`LabelMultiplier$$, 0}], 
+            Text[
+             Style["t", FontSize -> $CellContext`LetterSize$$], {
+             0, $CellContext`DiagramRange$$ $CellContext`LabelMultiplier$$}]}, 
+           If[$CellContext`LightConeEdgeShow$$, {
+             Thickness[0.0025], $CellContext`LightConeEdgeColor$$, 
+             
+             Line[{{-$CellContext`DiagramRange$$, \
+-$CellContext`DiagramRange$$}, {$CellContext`DiagramRange$$, \
+$CellContext`DiagramRange$$}}], 
+             
+             Line[{{-$CellContext`DiagramRange$$, \
+$CellContext`DiagramRange$$}, {$CellContext`DiagramRange$$, \
+-$CellContext`DiagramRange$$}}]}], 
+           If[$CellContext`LightConeInteriorShow$$, {
+             
+             Opacity[$CellContext`LightConeInteriorOpacity$$], \
+$CellContext`LightConeInteriorColor$$, 
+             
+             Triangle[{{-$CellContext`DiagramRange$$, \
+-$CellContext`DiagramRange$$}, {0, 
+               0}, {$CellContext`DiagramRange$$, \
+-$CellContext`DiagramRange$$}}], 
+             
+             Triangle[{{-$CellContext`DiagramRange$$, \
+$CellContext`DiagramRange$$}, {0, 
+               0}, {$CellContext`DiagramRange$$, \
+$CellContext`DiagramRange$$}}]}], 
+           If[$CellContext`WhichDemo$$ != "Twin \"Paradox\"", {Black, 
+             
+             Arrowheads[{-$CellContext`ArrowSize$$, \
+$CellContext`ArrowSize$$}], 
+             If[$CellContext`WhichDemo$$ != "Barn \"Paradox\"", 
+              Arrow[{
+                $CellContext`LorentzTransform$$[{-$CellContext`DiagramRange$$,
+                   0}], 
+                $CellContext`LorentzTransform$$[{$CellContext`DiagramRange$$, 
+                  0}]}]], 
+             Arrow[{
+               $CellContext`LorentzTransform$$[{
+                0, -$CellContext`DiagramRange$$}], 
+               $CellContext`LorentzTransform$$[{
+                0, $CellContext`DiagramRange$$}]}]}], 
+           If[$CellContext`WhichDemo$$ != "Twin \"Paradox\"", {
+             Text[
+              Style["x'", FontSize -> $CellContext`LetterSize$$], 
+              Map[
+              Min[{#, $CellContext`DiagramRange$$}]& , \
+$CellContext`LorentzTransform$$[{$CellContext`DiagramRange$$/$CellContext`\
+LorentzFactor$$, 
+                  0}] - {$CellContext`SPrimeX$$, \
+($CellContext`DiagramRange$$/$CellContext`GridNumber$$)/
+                 2 + $CellContext`SPrimeX$$ $CellContext`SPrimeV$$}]], 
+             Text[
+              Style["t'", FontSize -> $CellContext`LetterSize$$], 
+              Map[
+              Min[{#, $CellContext`DiagramRange$$}]& , \
+$CellContext`LorentzTransform$$[{
+                 0, $CellContext`DiagramRange$$/$CellContext`LorentzFactor$$}]\
+ - {($CellContext`DiagramRange$$/$CellContext`GridNumber$$)/
+                 
+                 2 + $CellContext`SPrimeT$$ $CellContext`SPrimeV$$, \
+$CellContext`SPrimeT$$}]]}], 
+           If[
+            Or[$CellContext`SPrimeX$$ != 0, $CellContext`SPrimeT$$ != 0], {
+             Text[
+              Style["S", FontSize -> 1.5 $CellContext`LetterSize$$], 
+              0.05 $CellContext`DiagramRange$$ {-1, -1}], 
+             Text[
+              Style["S'", FontSize -> 1.5 $CellContext`LetterSize$$], 
+              0.05 $CellContext`DiagramRange$$ {
+                1, -1} + {$CellContext`SPrimeX$$, $CellContext`SPrimeT$$}]}], 
+           
+           If[$CellContext`LightConeEdgeShow$$, \
+{$CellContext`LightConeEdgeColor$$, 
+             
+             Line[{{$CellContext`SPrimeX$$ - $CellContext`DiagramRange$$, \
+$CellContext`SPrimeT$$ - $CellContext`DiagramRange$$}, \
+{$CellContext`SPrimeX$$ + $CellContext`DiagramRange$$, $CellContext`SPrimeT$$ + \
+$CellContext`DiagramRange$$}}], 
+             
+             Line[{{$CellContext`SPrimeX$$ - $CellContext`DiagramRange$$, \
+$CellContext`SPrimeT$$ + $CellContext`DiagramRange$$}, \
+{$CellContext`SPrimeX$$ + $CellContext`DiagramRange$$, $CellContext`SPrimeT$$ - \
+$CellContext`DiagramRange$$}}]}], 
+           If[$CellContext`LightConeInteriorShow$$, {
+             
+             Opacity[$CellContext`LightConeInteriorOpacity$$], \
+$CellContext`LightConeInteriorColor$$, 
+             
+             Triangle[{{$CellContext`SPrimeX$$ - $CellContext`DiagramRange$$, \
+$CellContext`SPrimeT$$ - $CellContext`DiagramRange$$}, \
+{$CellContext`SPrimeX$$, $CellContext`SPrimeT$$}, {$CellContext`SPrimeX$$ + \
+$CellContext`DiagramRange$$, $CellContext`SPrimeT$$ - \
+$CellContext`DiagramRange$$}}], 
+             
+             Triangle[{{$CellContext`SPrimeX$$ - $CellContext`DiagramRange$$, \
+$CellContext`SPrimeT$$ + $CellContext`DiagramRange$$}, \
+{$CellContext`SPrimeX$$, $CellContext`SPrimeT$$}, {$CellContext`SPrimeX$$ + \
+$CellContext`DiagramRange$$, $CellContext`SPrimeT$$ + \
+$CellContext`DiagramRange$$}}]}], 
+           If[$CellContext`FutureShow$$, {
+             
+             Opacity[$CellContext`FutureOpacity$$], \
+$CellContext`FutureColor$$, 
+             Polygon[{
+               $CellContext`LorentzTransform$$[{-$CellContext`DiagramRange$$, 
+                 0}], 
+               $CellContext`LorentzTransform$$[{$CellContext`DiagramRange$$, 
+                 0}], 
+               $CellContext`LorentzTransform$$[{$CellContext`DiagramRange$$, \
+$CellContext`DiagramRange$$}], 
+               $CellContext`LorentzTransform$$[{-$CellContext`DiagramRange$$, \
+$CellContext`DiagramRange$$}]}]}], 
+           
+           If[$CellContext`WhichDemo$$ == 
+            "Time Travel", {$CellContext`TachyonColor$$, 
+             Thickness[0.005], 
+             Arrowheads[$CellContext`ArrowSize$$], 
+             
+             Arrow[{{0, 
+               0}, {$CellContext`SPrimeX$$, $CellContext`SPrimeT$$}}], 
+             
+             Arrow[{{$CellContext`SPrimeX$$, $CellContext`SPrimeT$$}, {
+               0, $CellContext`ArrivalTime$$}}]}], 
+           If[$CellContext`GridSShow$$, {
+             Opacity[$CellContext`GridOpacity$$], $CellContext`GridSColor$$, 
+             Thickness[0.0015], 
+             Table[
+              
+              Line[{{$CellContext`x, -$CellContext`DiagramRange$$}, \
+{$CellContext`x, $CellContext`DiagramRange$$}}], {$CellContext`x, \
+-$CellContext`DiagramRange$$, $CellContext`DiagramRange$$, \
+$CellContext`DiagramRange$$/$CellContext`GridNumber$$}], 
+             Table[
+              
+              Line[{{-$CellContext`DiagramRange$$, $CellContext`t}, \
+{$CellContext`DiagramRange$$, $CellContext`t}}], {$CellContext`t, \
+-$CellContext`DiagramRange$$, $CellContext`DiagramRange$$, \
+$CellContext`DiagramRange$$/$CellContext`GridNumber$$}]}], 
+           If[$CellContext`WhichDemo$$ == "Clocks", 
+            Table[
+             $CellContext`DrawClock$$[
+              $CellContext`LorentzTransform$$[{$CellContext`x, \
+$CellContext`t}], 
+              If[$CellContext`WhichObserver$$ == 0, 
+               Part[
+                $CellContext`LorentzTransform$$[{$CellContext`x, \
+$CellContext`t}], 
+                2], $CellContext`t]], {$CellContext`x, \
+-$CellContext`DiagramRange$$ + \
+$CellContext`DiagramRange$$/$CellContext`GridNumber$$, \
+$CellContext`DiagramRange$$, \
+($CellContext`DiagramRange$$/$CellContext`GridNumber$$) 
+              2}, {$CellContext`t, -$CellContext`DiagramRange$$ + \
+$CellContext`DiagramRange$$/$CellContext`GridNumber$$, \
+$CellContext`DiagramRange$$, \
+($CellContext`DiagramRange$$/$CellContext`GridNumber$$) 2}]], 
+           
+           If[$CellContext`WhichDemo$$ == 
+            "Simultaneity", {$CellContext`SimultaneityColor$$, 
+             PointSize[0.02], 
+             If[$CellContext`WhichObserver$$ == 0, {
+               
+               Point[{(-$CellContext`SimultaneitySep$$) \
+($CellContext`DiagramRange$$/$CellContext`GridNumber$$), 0}], 
+               
+               Point[{$CellContext`SimultaneitySep$$ \
+($CellContext`DiagramRange$$/$CellContext`GridNumber$$), 0}], 
+               Text[
+                Style[
+                "A", FontSize -> $CellContext`LetterSize$$], \
+{(-$CellContext`SimultaneitySep$$) \
+($CellContext`DiagramRange$$/$CellContext`GridNumber$$), \
+(-$CellContext`DiagramRange$$) 0.05}], 
+               Text[
+                Style[
+                "B", FontSize -> $CellContext`LetterSize$$], \
+{$CellContext`SimultaneitySep$$ \
+($CellContext`DiagramRange$$/$CellContext`GridNumber$$), \
+(-$CellContext`DiagramRange$$) 0.05}]}, {
+               Point[
+                $CellContext`LorentzTransform$$[{(-$CellContext`\
+SimultaneitySep$$) ($CellContext`DiagramRange$$/$CellContext`GridNumber$$), 
+                  0}]], 
+               Point[
+                $CellContext`LorentzTransform$$[{$CellContext`SimultaneitySep$\
+$ ($CellContext`DiagramRange$$/$CellContext`GridNumber$$), 0}]], 
+               Text[
+                Style["A", FontSize -> $CellContext`LetterSize$$], 
+                $CellContext`LorentzTransform$$[{(-$CellContext`\
+SimultaneitySep$$) ($CellContext`DiagramRange$$/$CellContext`GridNumber$$), \
+(-$CellContext`DiagramRange$$) 0.05}]], 
+               Text[
+                Style["B", FontSize -> $CellContext`LetterSize$$], 
+                $CellContext`LorentzTransform$$[{$CellContext`SimultaneitySep$\
+$ ($CellContext`DiagramRange$$/$CellContext`GridNumber$$), \
+(-$CellContext`DiagramRange$$) 0.05}]]}], Dashed, 
+             If[$CellContext`WhichObserver$$ == 0, {
+               Line[
+                (
+                Map[$CellContext`LorentzTransform$$, \
+{{-$CellContext`DiagramRange$$, #}, {$CellContext`DiagramRange$$, #}}]& )[
+                 Part[
+                  $CellContext`LorentzTransformInverse$$[{(-$CellContext`\
+SimultaneitySep$$) ($CellContext`DiagramRange$$/$CellContext`GridNumber$$), 
+                    0}], 2]]], 
+               Line[
+                (
+                Map[$CellContext`LorentzTransform$$, \
+{{-$CellContext`DiagramRange$$, #}, {$CellContext`DiagramRange$$, #}}]& )[
+                 Part[
+                  $CellContext`LorentzTransformInverse$$[{$CellContext`\
+SimultaneitySep$$ ($CellContext`DiagramRange$$/$CellContext`GridNumber$$), 
+                    0}], 2]]], 
+               Line[
+                (
+                Map[$CellContext`LorentzTransform$$, {{#, \
+-$CellContext`DiagramRange$$}, {#, $CellContext`DiagramRange$$}}]& )[
+                 Part[
+                  $CellContext`LorentzTransformInverse$$[{(-$CellContext`\
+SimultaneitySep$$) ($CellContext`DiagramRange$$/$CellContext`GridNumber$$), 
+                    0}], 1]]], 
+               Line[
+                (
+                Map[$CellContext`LorentzTransform$$, {{#, \
+-$CellContext`DiagramRange$$}, {#, $CellContext`DiagramRange$$}}]& )[
+                 Part[
+                  $CellContext`LorentzTransformInverse$$[{$CellContext`\
+SimultaneitySep$$ ($CellContext`DiagramRange$$/$CellContext`GridNumber$$), 
+                    0}], 1]]]}, {
+               (
+               Line[{{-$CellContext`DiagramRange$$, #}, \
+{$CellContext`DiagramRange$$, #}}]& )[
+                Part[
+                 $CellContext`LorentzTransform$$[{(-$CellContext`\
+SimultaneitySep$$) ($CellContext`DiagramRange$$/$CellContext`GridNumber$$), 
+                   0}], 2]], 
+               (
+               Line[{{-$CellContext`DiagramRange$$, #}, \
+{$CellContext`DiagramRange$$, #}}]& )[
+                Part[
+                 $CellContext`LorentzTransform$$[{$CellContext`\
+SimultaneitySep$$ ($CellContext`DiagramRange$$/$CellContext`GridNumber$$), 
+                   0}], 2]], 
+               (
+               Line[{{#, -$CellContext`DiagramRange$$}, {#, \
+$CellContext`DiagramRange$$}}]& )[
+                Part[
+                 $CellContext`LorentzTransform$$[{(-$CellContext`\
+SimultaneitySep$$) ($CellContext`DiagramRange$$/$CellContext`GridNumber$$), 
+                   0}], 1]], 
+               (
+               Line[{{#, -$CellContext`DiagramRange$$}, {#, \
+$CellContext`DiagramRange$$}}]& )[
+                Part[
+                 $CellContext`LorentzTransform$$[{$CellContext`\
+SimultaneitySep$$ ($CellContext`DiagramRange$$/$CellContext`GridNumber$$), 
+                   0}], 1]]}]}], 
+           
+           If[$CellContext`WhichDemo$$ == 
+            "Time Dilation", {{$CellContext`TimeDilationColor$$, 
+              Thickness[0.005], 
+              Arrowheads[{-1, 1} 0.025], 
+              If[$CellContext`WhichObserver$$ == 0, 
+               Line[
+                
+                Map[$CellContext`LorentzTransform$$, {{0, 0}, {
+                  0, $CellContext`TimeDilationDuration$$ \
+($CellContext`DiagramRange$$/$CellContext`GridNumber$$)}}]], 
+               Arrow[
+                
+                Map[$CellContext`LorentzTransform$$, {{0, 0}, {
+                  0, $CellContext`TimeDilationDuration$$ \
+($CellContext`DiagramRange$$/$CellContext`GridNumber$$) \
+$CellContext`LorentzFactor$$}}]]], 
+              If[$CellContext`WhichObserver$$ == 0, 
+               Arrow[{{0, 
+                  Part[
+                   $CellContext`LorentzTransform$$[{0, 0}], 2]}, {0, 
+                  Part[
+                   $CellContext`LorentzTransform$$[{
+                    0, $CellContext`TimeDilationDuration$$ \
+($CellContext`DiagramRange$$/$CellContext`GridNumber$$)}], 2]}}], 
+               Line[{{
+                 0, $CellContext`SPrimeT$$ - $CellContext`SPrimeX$$ \
+$CellContext`SPrimeV$$}, {
+                 0, $CellContext`SPrimeT$$ - $CellContext`SPrimeX$$ \
+$CellContext`SPrimeV$$ + $CellContext`TimeDilationDuration$$ \
+($CellContext`DiagramRange$$/$CellContext`GridNumber$$)}}]]}, {Dashed, 
+              If[$CellContext`WhichObserver$$ == 0, {
+                (
+                Line[{{-$CellContext`DiagramRange$$, #}, \
+{$CellContext`DiagramRange$$, #}}]& )[
+                 Part[
+                  $CellContext`LorentzTransform$$[{
+                   0, $CellContext`TimeDilationDuration$$ \
+($CellContext`DiagramRange$$/$CellContext`GridNumber$$)}], 2]], 
+                (
+                Line[{{-$CellContext`DiagramRange$$, #}, \
+{$CellContext`DiagramRange$$, #}}]& )[$CellContext`SPrimeT$$]}, {
+                (Line[{
+                  $CellContext`LorentzTransform$$[{-$CellContext`DiagramRange$\
+$, #}], 
+                  $CellContext`LorentzTransform$$[{$CellContext`DiagramRange$$\
+, #}]}]& )[$CellContext`TimeDilationDuration$$ \
+($CellContext`DiagramRange$$/$CellContext`GridNumber$$) \
+$CellContext`LorentzFactor$$]}]}}], 
+           
+           If[$CellContext`WhichDemo$$ == 
+            "Length Contraction", {{$CellContext`LengthContColor$$, 
+              Thickness[0.005], 
+              Arrowheads[{-1, 1} 0.025], 
+              If[$CellContext`WhichObserver$$ == 0, 
+               Line[
+                
+                Map[$CellContext`LorentzTransform$$, {{0, 
+                  0}, {$CellContext`LengthContDistance$$ \
+($CellContext`DiagramRange$$/$CellContext`GridNumber$$), 0}}]], 
+               Arrow[
+                
+                Map[$CellContext`LorentzTransform$$, {{0, 
+                  0}, {$CellContext`LengthContDistance$$ \
+(($CellContext`DiagramRange$$/$CellContext`GridNumber$$)/$CellContext`\
+LorentzFactor$$), 0}}]]], 
+              If[$CellContext`WhichObserver$$ == 0, 
+               
+               Arrow[{{$CellContext`SPrimeX$$ - $CellContext`SPrimeT$$ \
+$CellContext`SPrimeV$$, 
+                  0}, {$CellContext`SPrimeX$$ - $CellContext`SPrimeT$$ \
+$CellContext`SPrimeV$$ + $CellContext`LengthContDistance$$ \
+(($CellContext`DiagramRange$$/$CellContext`GridNumber$$)/$CellContext`\
+LorentzFactor$$), 0}}], 
+               Line[{{
+                  Part[
+                   $CellContext`LorentzTransform$$[{0, 0}], 1], 0}, {
+                  Part[
+                   $CellContext`LorentzTransform$$[{$CellContext`\
+LengthContDistance$$ \
+(($CellContext`DiagramRange$$/$CellContext`GridNumber$$)/$CellContext`\
+LorentzFactor$$), 0}], 1], 0}}]]}, {Dashed, 
+              If[$CellContext`WhichObserver$$ == 0, {
+                Line[
+                 (
+                 Map[$CellContext`LorentzTransform$$, {{#, \
+-$CellContext`DiagramRange$$}, {#, $CellContext`DiagramRange$$}}]& \
+)[$CellContext`LengthContDistance$$ \
+($CellContext`DiagramRange$$/$CellContext`GridNumber$$)]]}, {
+                (
+                Line[{{#, (-$CellContext`DiagramRange$$) #}, {#, \
+$CellContext`DiagramRange$$}}]& )[
+                 Part[
+                  $CellContext`LorentzTransform$$[{$CellContext`\
+LengthContDistance$$ \
+(($CellContext`DiagramRange$$/$CellContext`GridNumber$$)/$CellContext`\
+LorentzFactor$$), 0}], 1]], 
+                (
+                Line[{{#, -$CellContext`DiagramRange$$}, {#, \
+$CellContext`DiagramRange$$}}]& )[$CellContext`SPrimeX$$]}]}}], 
+           
+           If[$CellContext`WhichDemo$$ == 
+            "Twin \"Paradox\"", {{$CellContext`TwinColor$$, 
+              Thickness[0.005], 
+              Arrow[{{0, 
+                 $CellContext`DivideNoZero$$[(-$CellContext`TwinDistance$$) \
+($CellContext`DiagramRange$$/$CellContext`GridNumber$$), 
+                  
+                  Abs[$CellContext`SPrimeV$$]]}, {$CellContext`TwinDistance$$ \
+($CellContext`DiagramRange$$/$CellContext`GridNumber$$) 
+                 Sign[$CellContext`SPrimeV$$], 0}}], 
+              
+              Arrow[{{$CellContext`TwinDistance$$ \
+($CellContext`DiagramRange$$/$CellContext`GridNumber$$) 
+                 Sign[$CellContext`SPrimeV$$], 0}, {0, 
+                 $CellContext`DivideNoZero$$[$CellContext`TwinDistance$$ \
+($CellContext`DiagramRange$$/$CellContext`GridNumber$$), 
+                  Abs[$CellContext`SPrimeV$$]]}}]}, {Dashed, 
+              If[$CellContext`WhichObserver$$ == 0, 
+               ({
+                
+                Line[{{-$CellContext`DiagramRange$$, -#}, \
+{$CellContext`DiagramRange$$, -#}}], 
+                
+                Line[{{-$CellContext`DiagramRange$$, #}, \
+{$CellContext`DiagramRange$$, #}}]}& )[
+                $CellContext`DivideNoZero$$[$CellContext`TwinDistance$$ \
+($CellContext`DiagramRange$$/$CellContext`GridNumber$$), \
+$CellContext`SPrimeV$$]], {
+                (Line[
+                 
+                 Map[$CellContext`LorentzTransform$$, \
+{{-$CellContext`DiagramRange$$, #}, {$CellContext`DiagramRange$$, #}}]]& )[
+                 Part[
+                  $CellContext`LorentzTransformInverse$$[{0, 
+                    $CellContext`DivideNoZero$$[(-$CellContext`TwinDistance$$)\
+ ($CellContext`DiagramRange$$/$CellContext`GridNumber$$), 
+                    Abs[$CellContext`SPrimeV$$]]}], 2]], 
+                (Line[
+                 
+                 Map[$CellContext`LorentzTransform$$, \
+{{-$CellContext`DiagramRange$$, #}, {$CellContext`DiagramRange$$, #}}]]& )[
+                 Part[
+                  $CellContext`LorentzTransformInverse$$[{$CellContext`\
+SPrimeX$$, 0}], 2]], 
+                (Line[
+                 
+                 Map[$CellContext`LorentzTransform$$[#, -1]& , \
+{{-$CellContext`DiagramRange$$, #}, {$CellContext`DiagramRange$$, #}}]]& )[
+                 Part[
+                  $CellContext`LorentzTransformInverse$$[{0, 
+                    $CellContext`DivideNoZero$$[$CellContext`TwinDistance$$ \
+($CellContext`DiagramRange$$/$CellContext`GridNumber$$), 
+                    Abs[$CellContext`SPrimeV$$]]}, -1], 2]], 
+                (Line[
+                 
+                 Map[$CellContext`LorentzTransform$$[#, -1]& , \
+{{-$CellContext`DiagramRange$$, #}, {$CellContext`DiagramRange$$, #}}]]& )[
+                 Part[
+                  $CellContext`LorentzTransformInverse$$[{$CellContext`\
+SPrimeX$$, 0}, -1], 2]]}]}}], 
+           If[$CellContext`WhichDemo$$ == "Barn \"Paradox\"", {{
+              Thickness[0.005], $CellContext`BarnPoleColor$$, 
+              If[$CellContext`WhichObserver$$ == 0, 
+               
+               Line[({#, {
+                  Part[#, 
+                    1] - $CellContext`BarnPoleLength$$/$CellContext`\
+LorentzFactor$$, 
+                   Part[#, 2]}}& )[
+                  $CellContext`LorentzTransform$$[{
+                   0, $CellContext`BarnPoleTime$$}]] \
+($CellContext`DiagramRange$$/$CellContext`GridNumber$$)], 
+               Line[
+               Map[$CellContext`LorentzTransform$$, {{
+                   0, $CellContext`BarnPoleTime$$}, \
+{-$CellContext`BarnPoleLength$$, $CellContext`BarnPoleTime$$}}] \
+($CellContext`DiagramRange$$/$CellContext`GridNumber$$)]], 
+              Opacity[0.3], 
+              
+              If[$CellContext`BarnPoleLength$$/$CellContext`LorentzFactor$$ <= \
+$CellContext`BarnLength$$, 
+               Polygon[
+                
+                Map[$CellContext`LorentzTransform$$, {{
+                  0, -$CellContext`DiagramRange$$}, {
+                  0, $CellContext`DiagramRange$$}, \
+{(-$CellContext`BarnPoleLength$$) \
+($CellContext`DiagramRange$$/$CellContext`GridNumber$$), \
+$CellContext`DiagramRange$$}, {(-$CellContext`BarnPoleLength$$) \
+($CellContext`DiagramRange$$/$CellContext`GridNumber$$), \
+-$CellContext`DiagramRange$$}}]], 
+               If[$CellContext`WhichObserver$$ == 0, 
+                Polygon[
+                 
+                 Map[$CellContext`LorentzTransform$$, {{
+                   0, -$CellContext`DiagramRange$$}, {0, 0}, 
+                   $CellContext`LorentzTransformInverse$$[{(-$CellContext`\
+BarnPoleLength$$) \
+(($CellContext`DiagramRange$$/$CellContext`GridNumber$$)/$CellContext`\
+LorentzFactor$$), 
+                    0}], {(-$CellContext`BarnPoleLength$$) \
+($CellContext`DiagramRange$$/$CellContext`GridNumber$$), \
+-$CellContext`DiagramRange$$}}]], 
+                Polygon[
+                 
+                 Map[$CellContext`LorentzTransform$$, {{
+                   0, -$CellContext`DiagramRange$$}, {0, 
+                    Part[
+                    $CellContext`LorentzTransformInverse$$[{(-$CellContext`\
+BarnLength$$) ($CellContext`DiagramRange$$/$CellContext`GridNumber$$), 0}], 
+                    2]}, {(-$CellContext`BarnPoleLength$$) \
+($CellContext`DiagramRange$$/$CellContext`GridNumber$$), 
+                    Part[
+                    $CellContext`LorentzTransformInverse$$[{(-$CellContext`\
+BarnLength$$) ($CellContext`DiagramRange$$/$CellContext`GridNumber$$), 0}], 
+                    2]}, {(-$CellContext`BarnPoleLength$$) \
+($CellContext`DiagramRange$$/$CellContext`GridNumber$$), \
+-$CellContext`DiagramRange$$}}]]]], $CellContext`BarnColor$$, 
+              
+              Polygon[{{0, -$CellContext`DiagramRange$$}, {
+                0, $CellContext`DiagramRange$$}, \
+{(-$CellContext`BarnLength$$) \
+($CellContext`DiagramRange$$/$CellContext`GridNumber$$), \
+$CellContext`DiagramRange$$}, {(-$CellContext`BarnLength$$) \
+($CellContext`DiagramRange$$/$CellContext`GridNumber$$), \
+-$CellContext`DiagramRange$$}}], 
+              Thickness[0.01], Dotted, 
+              Opacity[1], Black, 
+              Line[{{0, -$CellContext`DiagramRange$$}, {0, 0}}], 
+              
+              Line[{{(-$CellContext`BarnLength$$) \
+($CellContext`DiagramRange$$/$CellContext`GridNumber$$), \
+$CellContext`DiagramRange$$}, {(-$CellContext`BarnLength$$) \
+($CellContext`DiagramRange$$/$CellContext`GridNumber$$), 0}}]}, {Dashed, 
+              (
+              Line[{{#, -$CellContext`DiagramRange$$}, {#, \
+$CellContext`DiagramRange$$}}]& )[(-$CellContext`BarnLength$$) \
+($CellContext`DiagramRange$$/$CellContext`GridNumber$$)], 
+              (Line[
+               
+               Map[$CellContext`LorentzTransform$$, {{#, \
+-$CellContext`DiagramRange$$}, {#, $CellContext`DiagramRange$$}}]]& \
+)[(-$CellContext`BarnPoleLength$$) \
+($CellContext`DiagramRange$$/$CellContext`GridNumber$$)]}, 
+             If[
+              
+              And[$CellContext`BarnPoleLength$$/$CellContext`LorentzFactor$$ > \
+$CellContext`BarnLength$$, 
+               Or[
+                And[
+                Abs[$CellContext`BarnPoleTime$$] <= 
+                 0.01, $CellContext`WhichObserver$$ == 0], 
+                And[Abs[Part[
+                    $CellContext`LorentzTransformInverse$$[{-$CellContext`\
+BarnLength$$, 0}], 2] - $CellContext`BarnPoleTime$$] <= 
+                 0.01, $CellContext`WhichObserver$$ == 1]]], {Red, 
+               Thickness[0.003], 
+               Table[
+                Line[
+                 
+                 Map[{(-$CellContext`BarnLength$$) \
+($CellContext`DiagramRange$$/$CellContext`GridNumber$$), 0} + # {
+                    Sin[$CellContext`a], 
+                    Cos[$CellContext`a]}& , {0.03, 0.07}]], {$CellContext`a, 
+                 0, 2 Pi, Pi/5}]}]}], 
+           If[$CellContext`GridSPrimeTicksShow$$, {
+             If[$CellContext`WhichDemo$$ != "Twin \"Paradox\"", {Black, 
+               Thickness[0.003], 
+               Table[
+                Line[
+                 ReplaceAll[
+                  
+                  Map[$CellContext`LorentzTransform$$, {{$CellContext`x, \
+-$CellContext`s}, {$CellContext`x, $CellContext`s}}], $CellContext`s -> \
+($CellContext`DiagramRange$$/$CellContext`GridNumber$$) 
+                   0.1]], {$CellContext`x, -$CellContext`DiagramRange$$, \
+$CellContext`DiagramRange$$, \
+$CellContext`DiagramRange$$/$CellContext`GridNumber$$}], 
+               Table[
+                Line[
+                 ReplaceAll[
+                  
+                  Map[$CellContext`LorentzTransform$$, {{-$CellContext`s, \
+$CellContext`t}, {$CellContext`s, $CellContext`t}}], $CellContext`s -> \
+($CellContext`DiagramRange$$/$CellContext`GridNumber$$) 
+                   0.1]], {$CellContext`t, -$CellContext`DiagramRange$$, \
+$CellContext`DiagramRange$$, \
+$CellContext`DiagramRange$$/$CellContext`GridNumber$$}]}, {Black, 
+               Thickness[0.003], 
+               Table[
+                Line[
+                 ReplaceAll[
+                  
+                  Map[$CellContext`LorentzTransform$$, {{-$CellContext`s, \
+$CellContext`t}, {$CellContext`s, $CellContext`t}}], $CellContext`s -> \
+($CellContext`DiagramRange$$/$CellContext`GridNumber$$) 
+                   0.1]], {$CellContext`t, -$CellContext`DiagramRange$$, 
+                 0, $CellContext`DiagramRange$$/$CellContext`GridNumber$$}], 
+               Table[
+                Line[
+                 ReplaceAll[
+                  
+                  Map[$CellContext`LorentzTransform$$[#, -1]& , \
+{{-$CellContext`s, $CellContext`t}, {$CellContext`s, $CellContext`t}}], \
+$CellContext`s -> ($CellContext`DiagramRange$$/$CellContext`GridNumber$$) 
+                   0.1]], {$CellContext`t, 
+                 0, $CellContext`DiagramRange$$, \
+$CellContext`DiagramRange$$/$CellContext`GridNumber$$}], 
+               If[$CellContext`GridSPrimeShow$$, {
+                 Table[
+                  Line[
+                   ReplaceAll[
+                    
+                    Map[$CellContext`LorentzTransform$$, {{$CellContext`x, \
+-$CellContext`s}, {$CellContext`x, $CellContext`s}}], $CellContext`s -> \
+($CellContext`DiagramRange$$/$CellContext`GridNumber$$) 
+                    0.1]], {$CellContext`x, -$CellContext`DiagramRange$$, \
+$CellContext`DiagramRange$$, \
+$CellContext`DiagramRange$$/$CellContext`GridNumber$$}], 
+                 Table[
+                  Line[
+                   ReplaceAll[
+                    
+                    Map[$CellContext`LorentzTransform$$[#, -1]& , \
+{{$CellContext`x, -$CellContext`s}, {$CellContext`x, $CellContext`s}}], \
+$CellContext`s -> ($CellContext`DiagramRange$$/$CellContext`GridNumber$$) 
+                    0.1]], {$CellContext`x, -$CellContext`DiagramRange$$, \
+$CellContext`DiagramRange$$, \
+$CellContext`DiagramRange$$/$CellContext`GridNumber$$}]}]}]}], 
+           If[$CellContext`GridSPrimeShow$$, {
+             Opacity[$CellContext`GridOpacity$$], 
+             If[$CellContext`WhichDemo$$ != 
+              "Twin \"Paradox\"", {$CellContext`GridSPrimeColorT$$, 
+               Thickness[0.0015], 
+               Table[
+                Line[
+                 
+                 Map[$CellContext`LorentzTransform$$, {{$CellContext`x, \
+-$CellContext`DiagramRange$$}, {$CellContext`x, \
+$CellContext`DiagramRange$$}}]], {$CellContext`x, \
+-$CellContext`DiagramRange$$, $CellContext`DiagramRange$$, \
+$CellContext`DiagramRange$$/$CellContext`GridNumber$$}], \
+$CellContext`GridSPrimeColorX$$, 
+               Table[
+                Line[
+                 
+                 Map[$CellContext`LorentzTransform$$, \
+{{-$CellContext`DiagramRange$$, $CellContext`t}, \
+{$CellContext`DiagramRange$$, $CellContext`t}}]], {$CellContext`t, \
+-$CellContext`DiagramRange$$, $CellContext`DiagramRange$$, \
+$CellContext`DiagramRange$$/$CellContext`GridNumber$$}]}, \
+{$CellContext`GridSPrimeColorT$$, 
+               Thickness[0.0015], 
+               Table[
+                Line[
+                 
+                 Map[$CellContext`LorentzTransform$$, {{$CellContext`x, \
+-$CellContext`DiagramRange$$}, {$CellContext`x, 
+                    0}}]], {$CellContext`x, -$CellContext`DiagramRange$$, \
+$CellContext`DiagramRange$$, \
+$CellContext`DiagramRange$$/$CellContext`GridNumber$$}], 
+               Table[
+                Line[
+                 
+                 Map[$CellContext`LorentzTransform$$[#, -1]& , \
+{{$CellContext`x, 
+                    0}, {$CellContext`x, $CellContext`DiagramRange$$}}]], \
+{$CellContext`x, -$CellContext`DiagramRange$$, $CellContext`DiagramRange$$, \
+$CellContext`DiagramRange$$/$CellContext`GridNumber$$}], \
+$CellContext`GridSPrimeColorX$$, 
+               Table[
+                Line[
+                 
+                 Map[$CellContext`LorentzTransform$$, \
+{{-$CellContext`DiagramRange$$, $CellContext`t}, \
+{$CellContext`DiagramRange$$, $CellContext`t}}]], {$CellContext`t, \
+-$CellContext`DiagramRange$$, 
+                 0, $CellContext`DiagramRange$$/$CellContext`GridNumber$$}], 
+               Table[
+                Line[
+                 
+                 Map[$CellContext`LorentzTransform$$[#, -1]& , \
+{{-$CellContext`DiagramRange$$, $CellContext`t}, \
+{$CellContext`DiagramRange$$, $CellContext`t}}]], {$CellContext`t, 
+                 0, $CellContext`DiagramRange$$, \
+$CellContext`DiagramRange$$/$CellContext`GridNumber$$}]}]}], {
+            Locator[
+             
+             Dynamic[$CellContext`LorentzTransform$$[{
+                0, $CellContext`DiagramRange$$/$CellContext`LorentzFactor$$}] - \
+{$CellContext`SPrimeX$$, $CellContext`SPrimeT$$}, ($CellContext`SPrimeV$$ = 
+               Round[
+                 Max[{
+                   Min[{Part[#, 1]/Part[#, 2], 0.99}], -0.99}], 
+                 0.005]; $CellContext`LorentzFactor$$ = 
+               1/Sqrt[1 - $CellContext`SPrimeV$$^2]; \
+$CellContext`UpdateSecondPath$$[]; 
+              If[$CellContext`WhichDemo$$ == 
+                "Twin \"Paradox\"", {$CellContext`SPrimeX$$, \
+$CellContext`SPrimeT$$} = {$CellContext`TwinDistance$$ \
+($CellContext`DiagramRange$$/$CellContext`GridNumber$$) 
+                  Sign[$CellContext`SPrimeV$$], 0}]; If[
+                
+                And[$CellContext`WhichDemo$$ == 
+                 "Barn \"Paradox\"", \
+$CellContext`BarnPoleLength$$/$CellContext`LorentzFactor$$ > \
+$CellContext`BarnLength$$], 
+                If[$CellContext`WhichObserver$$ == 
+                  0, $CellContext`BarnPoleTime$$ = 
+                  Min[0, $CellContext`BarnPoleTime$$], \
+$CellContext`BarnPoleTime$$ = Min[
+                    Part[
+                    $CellContext`LorentzTransformInverse$$[{-$CellContext`\
+BarnLength$$, 0}], 2], $CellContext`BarnPoleTime$$]]; Null]; Null)& ]], 
+            If[
+             
+             And[$CellContext`WhichDemo$$ != 
+              "Twin \"Paradox\"", $CellContext`WhichDemo$$ != 
+              "Barn \"Paradox\""], 
+             Locator[
+              
+              Dynamic[{$CellContext`SPrimeX$$, $CellContext`SPrimeT$$}, \
+({$CellContext`SPrimeX$$, $CellContext`SPrimeT$$} = ({
+                    Round[
+                    Part[#, 
+                    1] ($CellContext`GridNumber$$/$CellContext`DiagramRange$$)\
+, 0.05], 
+                    Round[
+                    Part[#, 
+                    2] ($CellContext`GridNumber$$/$CellContext`DiagramRange$$)
+                    , 
+                    0.05]}/$CellContext`GridNumber$$) \
+$CellContext`DiagramRange$$; 
+               If[$CellContext`WhichDemo$$ == 
+                 "Time Travel", $CellContext`SPrimeT$$ = 
+                 Max[$CellContext`SPrimeT$$, 0]]; $CellContext`Path1V$$ = 
+                Quiet[$CellContext`SPrimeX$$/$CellContext`SPrimeT$$]; \
+$CellContext`UpdateSecondPath$$[]; Null)& ]]], 
+            If[$CellContext`WhichDemo$$ == "Simultaneity", 
+             Locator[
+              Dynamic[
+               
+               If[$CellContext`WhichObserver$$ == 
+                0, {$CellContext`SimultaneitySep$$ \
+($CellContext`DiagramRange$$/$CellContext`GridNumber$$), 0}, 
+                $CellContext`LorentzTransform$$[{$CellContext`SimultaneitySep$\
+$ ($CellContext`DiagramRange$$/$CellContext`GridNumber$$), 0}]], 
+               If[$CellContext`WhichObserver$$ == 
+                0, $CellContext`SimultaneitySep$$ = 
+                Round[Part[#, 
+                    1] ($CellContext`GridNumber$$/$CellContext`DiagramRange$$)\
+, 0.05], $CellContext`SimultaneitySep$$ = Round[Part[
+                    $CellContext`LorentzTransformInverse$$[{
+                    Part[#, 1], 
+                    Part[#, 2]}], 
+                    1] ($CellContext`GridNumber$$/$CellContext`DiagramRange$$)\
+, 0.05]]& ]]], 
+            If[$CellContext`WhichDemo$$ == "Time Dilation", 
+             Locator[
+              If[$CellContext`WhichObserver$$ == 0, 
+               Dynamic[
+                $CellContext`LorentzTransform$$[{
+                 0, $CellContext`TimeDilationDuration$$ \
+($CellContext`DiagramRange$$/$CellContext`GridNumber$$)}], \
+($CellContext`TimeDilationDuration$$ = Round[Part[
+                    $CellContext`LorentzTransformInverse$$[{
+                    Part[#, 1], 
+                    Part[#, 2]}], 
+                    2] ($CellContext`GridNumber$$/$CellContext`DiagramRange$$)\
+, 0.05]; Null)& ], 
+               
+               Dynamic[{
+                0, $CellContext`SPrimeT$$ - $CellContext`SPrimeX$$ \
+$CellContext`SPrimeV$$ + $CellContext`TimeDilationDuration$$ \
+($CellContext`DiagramRange$$/$CellContext`GridNumber$$)}, \
+($CellContext`TimeDilationDuration$$ = 
+                 Round[Part[#, 
+                    2] ($CellContext`GridNumber$$/$CellContext`DiagramRange$$)\
+, 0.05]; Null)& ]]]], 
+            If[$CellContext`WhichDemo$$ == "Length Contraction", 
+             Locator[
+              If[$CellContext`WhichObserver$$ == 0, 
+               Dynamic[
+                $CellContext`LorentzTransform$$[{$CellContext`\
+LengthContDistance$$ ($CellContext`DiagramRange$$/$CellContext`GridNumber$$), 
+                  0}], ($CellContext`LengthContDistance$$ = Round[Part[
+                    $CellContext`LorentzTransformInverse$$[{
+                    Part[#, 1], 
+                    Part[#, 2]}], 
+                    1] ($CellContext`GridNumber$$/$CellContext`DiagramRange$$)\
+, 0.05]; Null)& ], 
+               Dynamic[{
+                 Part[
+                  $CellContext`LorentzTransform$$[{$CellContext`\
+LengthContDistance$$ \
+(($CellContext`DiagramRange$$/$CellContext`GridNumber$$)/$CellContext`\
+LorentzFactor$$), 0}], 1], 0}, ($CellContext`LengthContDistance$$ = 
+                 Round[Part[#, 
+                    1] ($CellContext`GridNumber$$/$CellContext`DiagramRange$$)\
+, 0.05]; Null)& ]]]], 
+            If[$CellContext`WhichDemo$$ == "Twin \"Paradox\"", 
+             Locator[
+              
+              Dynamic[{$CellContext`TwinDistance$$ \
+($CellContext`DiagramRange$$/$CellContext`GridNumber$$) 
+                Sign[$CellContext`SPrimeV$$], 
+                0}, ($CellContext`SPrimeX$$ = (
+                  Round[Part[#, 
+                    1] ($CellContext`GridNumber$$/$CellContext`DiagramRange$$)\
+, 0.05]/$CellContext`GridNumber$$) $CellContext`DiagramRange$$; \
+$CellContext`TwinDistance$$ = 
+                Abs[$CellContext`SPrimeX$$ \
+($CellContext`GridNumber$$/$CellContext`DiagramRange$$)]; 
+               If[Sign[$CellContext`SPrimeV$$] != Sign[
+                   
+                   Part[#, 
+                    1]], $CellContext`SPrimeV$$ = -$CellContext`SPrimeV$$]; 
+               Null)& ]]], 
+            If[$CellContext`WhichDemo$$ == "Barn \"Paradox\"", 
+             Locator[
+              Dynamic[
+               $CellContext`LorentzTransform$$[{
+                
+                0, $CellContext`BarnPoleTime$$ \
+($CellContext`DiagramRange$$/$CellContext`GridNumber$$)}], \
+($CellContext`BarnPoleTime$$ = Round[Part[
+                    $CellContext`LorentzTransformInverse$$[{
+                    Part[#, 1], 
+                    Part[#, 2]}], 
+                    2] ($CellContext`GridNumber$$/$CellContext`DiagramRange$$)\
+, 0.05]; If[$CellContext`BarnPoleLength$$/$CellContext`LorentzFactor$$ > \
+$CellContext`BarnLength$$, 
+                 
+                 If[$CellContext`WhichObserver$$ == 
+                  0, $CellContext`BarnPoleTime$$ = 
+                  Min[0, $CellContext`BarnPoleTime$$], \
+$CellContext`BarnPoleTime$$ = Min[
+                    Part[
+                    $CellContext`LorentzTransformInverse$$[{-$CellContext`\
+BarnLength$$, 0}], 2], $CellContext`BarnPoleTime$$]]]; Null)& ]]], 
+            If[$CellContext`WhichDemo$$ == "Time Travel", 
+             Locator[
+              
+              Dynamic[{
+               0, $CellContext`ArrivalTime$$}, ($CellContext`ArrivalTime$$ = 
+                Round[
+                  Part[#, 2], 0.05]; $CellContext`UpdateSecondPath$$[]; 
+               Null)& ]]]}}, 
+          ImageSize -> {$CellContext`DiagramSize$$, \
+$CellContext`DiagramSize$$}, 
+          PlotRange -> {{-$CellContext`DiagramRange$$, \
+$CellContext`DiagramRange$$}, {-$CellContext`DiagramRange$$, \
+$CellContext`DiagramRange$$}} $CellContext`LabelMultiplier$$^2], StandardForm],
+        ImageSizeCache->{770.0000000000001, {382., 388.0000000000001}}]}
+     },
+     DefaultBaseStyle->"Column",
+     GridBoxAlignment->{"Columns" -> {{Center}}},
+     GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+    "Column"],
+   Deploy,
+   DefaultBaseStyle->"Deploy"],
+  DynamicModuleValues:>{{DownValues[$CellContext`ColorButton$$] = {HoldPattern[
+         $CellContext`ColorButton$$[
+          Pattern[$CellContext`val$, 
+           Blank[]], 
+          Pattern[$CellContext`color$, 
+           Blank[]], 
+          Pattern[$CellContext`text$, 
+           Blank[]]]] :> Row[{
+          Toggler[
+           Dynamic[$CellContext`val$], {False -> Graphics[{White, 
+               Disk[{0, 0}, 1], 
+               EdgeForm[
+                Thickness[0.03]], 
+               Disk[{0, 0}, 0.9]}], True -> 
+            If[Head[$CellContext`color$] =!= List, 
+              Graphics[{$CellContext`color$, 
+                Disk[{0, 0}, 1], 
+                EdgeForm[
+                 Thickness[0.03]], 
+                Disk[{0, 0}, 0.9]}], 
+              Graphics[{{
+                 Part[$CellContext`color$, 1], 
+                 Disk[{0, 0}, 1, {Pi/2, 3 (Pi/2)}], 
+                 EdgeForm[
+                  Thickness[0.03]], 
+                 Disk[{0, 0}, 0.9, {Pi/2, 3 (Pi/2)}]}, {
+                 Part[$CellContext`color$, 2], 
+                 Disk[{0, 0}, 1, {3 (Pi/2), 5 (Pi/2)}], 
+                 EdgeForm[
+                  Thickness[0.03]], 
+                 Disk[{0, 0}, 0.9, {3 (Pi/2), 5 (Pi/2)}]}}]]}, 
+           ImageSize -> $CellContext`LegendSize$$], 
+          " ", $CellContext`text$}]}, 
+     Attributes[$CellContext`ColorButton$$] = {HoldFirst}}, {
+    DownValues[$CellContext`DivideNoZero$$] = {HoldPattern[
+         $CellContext`DivideNoZero$$[
+          Pattern[$CellContext`numerator, 
+           Blank[]], 
+          Pattern[$CellContext`denominator, 
+           Blank[]]]] :> 
+       If[$CellContext`denominator == 0, Sign[$CellContext`numerator] 
+         100000., $CellContext`numerator/$CellContext`denominator]}}, {
+    DownValues[$CellContext`DrawClock$$] = {HoldPattern[
+         $CellContext`DrawClock$$[{
+           Pattern[$CellContext`x$, 
+            Blank[]], 
+           Pattern[$CellContext`t$, 
+            Blank[]]}, 
+          Pattern[$CellContext`time$, 
+           Blank[]]]] :> ReplaceAll[{
+          
+          Circle[{$CellContext`x$, $CellContext`t$}, \
+($CellContext`DiagramRange$$/$CellContext`GridNumber$$) $CellContext`r], 
+          Thickness[0.002], Gray, 
+          Table[
+           Line[
+            Map[{$CellContext`x$, $CellContext`t$} + # {
+                Sin[$CellContext`a], 
+                
+                Cos[$CellContext`a]} \
+($CellContext`DiagramRange$$/$CellContext`GridNumber$$) $CellContext`r& , {
+             0.8, 0.9}]], {$CellContext`a, 0, 2 Pi, Pi/6}], Black, 
+          
+          Line[{{$CellContext`x$, $CellContext`t$}, {$CellContext`x$, \
+$CellContext`t$} + 0.7 ReplaceAll[{
+                Sin[$CellContext`a], 
+                
+                Cos[$CellContext`a]}, $CellContext`a -> (
+                 1 + ($CellContext`time$/$CellContext`DiagramRange$$) \
+($CellContext`GridNumber$$/($CellContext`GridNumber$$ - 1))) 
+                Pi] ($CellContext`DiagramRange$$/$CellContext`GridNumber$$) \
+$CellContext`r}]}, $CellContext`r -> 0.6]}}, {
+    DownValues[$CellContext`LorentzTransform$$] = {HoldPattern[
+         $CellContext`LorentzTransform$$[{
+           Pattern[$CellContext`x$, 
+            Blank[]], 
+           Pattern[$CellContext`t$, 
+            Blank[]]}, 
+          Optional[
+           Pattern[$CellContext`sign$, 
+            Blank[]], 
+           1]]] :> {$CellContext`LorentzFactor$$ ($CellContext`x$ + \
+$CellContext`sign$ $CellContext`SPrimeV$$ $CellContext`t$) + \
+$CellContext`SPrimeX$$, $CellContext`LorentzFactor$$ ($CellContext`t$ + \
+$CellContext`sign$ $CellContext`SPrimeV$$ $CellContext`x$) + \
+$CellContext`SPrimeT$$}}}, {
+    DownValues[$CellContext`LorentzTransformInverse$$] = {HoldPattern[
+         $CellContext`LorentzTransformInverse$$[{
+           Pattern[$CellContext`x$, 
+            Blank[]], 
+           Pattern[$CellContext`t$, 
+            Blank[]]}, 
+          Optional[
+           Pattern[$CellContext`sign$, 
+            Blank[]], 
+           1]]] :> {$CellContext`LorentzFactor$$ (($CellContext`x$ - \
+$CellContext`SPrimeX$$) - $CellContext`sign$ $CellContext`SPrimeV$$ \
+($CellContext`t$ - $CellContext`SPrimeT$$)), $CellContext`LorentzFactor$$ \
+(($CellContext`t$ - $CellContext`SPrimeT$$) - $CellContext`sign$ \
+$CellContext`SPrimeV$$ ($CellContext`x$ - $CellContext`SPrimeX$$))}}}, {
+    DownValues[$CellContext`PadNumber$$] = {HoldPattern[
+         $CellContext`PadNumber$$[
+          Pattern[$CellContext`n, 
+           Blank[]]]] :> PaddedForm[
+         N[$CellContext`n], {4, 2}, NumberPadding -> {"", "0"}, 
+         NumberSigns -> {"-", "+"}]}}, {
+    DownValues[$CellContext`PadNumberPositive$$] = {HoldPattern[
+         $CellContext`PadNumberPositive$$[
+          Pattern[$CellContext`n, 
+           Blank[]]]] :> PaddedForm[
+         N[$CellContext`n], {4, 2}, NumberPadding -> {"", "0"}]}}, {
+    DownValues[$CellContext`UpdateSecondPath$$] = {HoldPattern[
+         $CellContext`UpdateSecondPath$$[]] :> ($CellContext`ArrivalTime$$ = 
+         Max[$CellContext`ArrivalTime$$, $CellContext`SPrimeT$$ - \
+$CellContext`SPrimeX$$ $CellContext`SPrimeV$$]; $CellContext`Path2V$$ = 
+         Quiet[($CellContext`SPrimeX$$ + ($CellContext`ArrivalTime$$ - \
+$CellContext`SPrimeT$$) $CellContext`SPrimeV$$)/($CellContext`SPrimeT$$ - \
+($CellContext`ArrivalTime$$ + $CellContext`SPrimeX$$ \
+$CellContext`SPrimeV$$))]; 
+        If[$CellContext`Path2V$$ === Indeterminate, $CellContext`Path2V$$ = 
+          0]; Null)}}}]], "Output",
+ CellLabel->"Out[1]=",ExpressionUUID->"b854eb79-3f77-47b1-88ed-5a1a5440d30d"]
+}, {2}]]
+},
+WindowSize->{1024.8, 797.4},
+WindowMargins->{{Automatic, -5.399999999999636}, {Automatic, -0.6}},
+PrivateNotebookOptions->{"FileOutlineCache"->False},
+TaggingRules-><|"TryRealOnly" -> False|>,
+TrackCellChangeTimes->False,
+Magnification:>1.1 Inherited,
+FrontEndVersion->"13.0 for Microsoft Windows (64-bit) (February 4, 2022)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"25e0c04e-8c89-424f-8fe5-a212d7fc764e"
+]

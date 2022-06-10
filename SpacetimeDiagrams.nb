@@ -1,12 +1,31 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     62253,       1339]
+NotebookOptionsPosition[     61682,       1320]
+NotebookOutlinePosition[     62175,       1338]
+CellTagsIndexPosition[     62132,       1335]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
 Notebook[{
 
 Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"Get", "[", 
   RowBox[{"\"\<SpacetimeDiagrams.m\>\"", ",", 
-   RowBox[{"Path", "\[Rule]", 
+   RowBox[{"Path", "->", 
     RowBox[{"NotebookDirectory", "[", "]"}]}]}], "]"}]], "Input",
- CellLabel->"In[1]:=",ExpressionUUID->"e08d4dee-7a31-443a-8a21-58d976084333"],
+ CellLabel->"In[1]:=",ExpressionUUID->"ab6a3ed6-f1b7-4148-8c40-c274e3361445"],
 
 Cell[BoxData[
  DynamicModuleBox[{$CellContext`ArrivalTime$$ = 0, $CellContext`ArrowSize$$ = 
@@ -161,15 +180,15 @@ $CellContext`GridNumber$$]], $CellContext`Spaces$$,
                     $CellContext`PadNumber$$[(Part[
                     $CellContext`LorentzTransform$$[{(-$CellContext`\
 SimultaneitySep$$) ($CellContext`DiagramRange$$/$CellContext`GridNumber$$), 
-                    0}], 
-                    2]/$CellContext`DiagramRange$$) \
+                    0}], 2]/$CellContext`DiagramRange$$) \
 $CellContext`GridNumber$$]], ", ", 
                     Subscript["t", "B"], " = ", 
                     Dynamic[
                     $CellContext`PadNumber$$[(Part[
                     $CellContext`LorentzTransform$$[{$CellContext`\
 SimultaneitySep$$ ($CellContext`DiagramRange$$/$CellContext`GridNumber$$), 
-                    0}], 2]/$CellContext`DiagramRange$$) \
+                    0}], 
+                    2]/$CellContext`DiagramRange$$) \
 $CellContext`GridNumber$$]]}]], $CellContext`Spaces$$, 
                  Row[
                   If[$CellContext`WhichObserver$$ == 0, {
@@ -318,6 +337,7 @@ $ <= $CellContext`BarnLength$$, "Pole fits!", "Pole doesn't fit!"], Bold]}],
                  Subscript["v", 1], " = ", 
                  Dynamic[
                   If[
+                   
                    Or[$CellContext`Path1V$$ === 
                     ComplexInfinity, $CellContext`Path1V$$ > 99.99], 
                    "   \[Infinity]   ", 
@@ -327,7 +347,6 @@ $ <= $CellContext`BarnLength$$, "Pole fits!", "Pole doesn't fit!"], Bold]}],
                  Subscript["v", 2], " = ", 
                  Dynamic[
                   If[
-                   
                    Or[$CellContext`Path2V$$ === 
                     ComplexInfinity, $CellContext`Path2V$$ > 99.99], 
                    "   \[Infinity]   ", 
@@ -338,7 +357,7 @@ $ <= $CellContext`BarnLength$$, "Pole fits!", "Pole doesn't fit!"], Bold]}],
                   $CellContext`PadNumber$$[$CellContext`ArrivalTime$$]]}], 
                FontColor -> $CellContext`TachyonColor$$]}, Nothing]}], 
           FontSize -> 12], StandardForm],
-        ImageSizeCache->{806., {41.36994140625, 47.19005859375}}]},
+        ImageSizeCache->{733., {38.1544921875, 43.4455078125}}]},
       {
        DynamicBox[ToBoxes[
          Graphics[{{Black, 
@@ -412,17 +431,19 @@ LorentzFactor$$,
 $CellContext`LorentzTransform$$[{
                  0, $CellContext`DiagramRange$$/$CellContext`LorentzFactor$$}]\
  - {($CellContext`DiagramRange$$/$CellContext`GridNumber$$)/
-                 
                  2 + $CellContext`SPrimeT$$ $CellContext`SPrimeV$$, \
 $CellContext`SPrimeT$$}]]}], 
            If[
             Or[$CellContext`SPrimeX$$ != 0, $CellContext`SPrimeT$$ != 0], {
              Text[
-              Style["S", FontSize -> 1.5 $CellContext`LetterSize$$], 
-              0.05 $CellContext`DiagramRange$$ {-1, -1}], 
+              Style[
+              "S", FontSize -> 1.5 $CellContext`LetterSize$$], (
+               0.05 $CellContext`DiagramRange$$) {-1, -1}], 
              Text[
-              Style["S'", FontSize -> 1.5 $CellContext`LetterSize$$], 
-              0.05 $CellContext`DiagramRange$$ {
+              Style[
+              "S'", FontSize -> 
+               1.5 $CellContext`LetterSize$$], (
+                0.05 $CellContext`DiagramRange$$) {
                 1, -1} + {$CellContext`SPrimeX$$, $CellContext`SPrimeT$$}]}], 
            
            If[$CellContext`LightConeEdgeShow$$, \
@@ -625,8 +646,8 @@ SimultaneitySep$$ ($CellContext`DiagramRange$$/$CellContext`GridNumber$$),
                Arrow[
                 
                 Map[$CellContext`LorentzTransform$$, {{0, 0}, {
-                  0, $CellContext`TimeDilationDuration$$ \
-($CellContext`DiagramRange$$/$CellContext`GridNumber$$) \
+                  0, ($CellContext`TimeDilationDuration$$ \
+($CellContext`DiagramRange$$/$CellContext`GridNumber$$)) \
 $CellContext`LorentzFactor$$}}]]], 
               If[$CellContext`WhichObserver$$ == 0, 
                Arrow[{{0, 
@@ -636,8 +657,8 @@ $CellContext`LorentzFactor$$}}]]],
                    $CellContext`LorentzTransform$$[{
                     0, $CellContext`TimeDilationDuration$$ \
 ($CellContext`DiagramRange$$/$CellContext`GridNumber$$)}], 2]}}], 
-               Line[{{
-                 0, $CellContext`SPrimeT$$ - $CellContext`SPrimeX$$ \
+               
+               Line[{{0, $CellContext`SPrimeT$$ - $CellContext`SPrimeX$$ \
 $CellContext`SPrimeV$$}, {
                  0, $CellContext`SPrimeT$$ - $CellContext`SPrimeX$$ \
 $CellContext`SPrimeV$$ + $CellContext`TimeDilationDuration$$ \
@@ -657,8 +678,8 @@ $CellContext`SPrimeV$$ + $CellContext`TimeDilationDuration$$ \
                   $CellContext`LorentzTransform$$[{-$CellContext`DiagramRange$\
 $, #}], 
                   $CellContext`LorentzTransform$$[{$CellContext`DiagramRange$$\
-, #}]}]& )[$CellContext`TimeDilationDuration$$ \
-($CellContext`DiagramRange$$/$CellContext`GridNumber$$) \
+, #}]}]& )[($CellContext`TimeDilationDuration$$ \
+($CellContext`DiagramRange$$/$CellContext`GridNumber$$)) \
 $CellContext`LorentzFactor$$]}]}}], 
            
            If[$CellContext`WhichDemo$$ == 
@@ -719,12 +740,13 @@ $CellContext`DiagramRange$$}}]& )[$CellContext`SPrimeX$$]}]}}],
                  $CellContext`DivideNoZero$$[(-$CellContext`TwinDistance$$) \
 ($CellContext`DiagramRange$$/$CellContext`GridNumber$$), 
                   
-                  Abs[$CellContext`SPrimeV$$]]}, {$CellContext`TwinDistance$$ \
-($CellContext`DiagramRange$$/$CellContext`GridNumber$$) 
+                  Abs[$CellContext`SPrimeV$$]]}, \
+{($CellContext`TwinDistance$$ \
+($CellContext`DiagramRange$$/$CellContext`GridNumber$$)) 
                  Sign[$CellContext`SPrimeV$$], 0}}], 
               
-              Arrow[{{$CellContext`TwinDistance$$ \
-($CellContext`DiagramRange$$/$CellContext`GridNumber$$) 
+              Arrow[{{($CellContext`TwinDistance$$ \
+($CellContext`DiagramRange$$/$CellContext`GridNumber$$)) 
                  Sign[$CellContext`SPrimeV$$], 0}, {0, 
                  $CellContext`DivideNoZero$$[$CellContext`TwinDistance$$ \
 ($CellContext`DiagramRange$$/$CellContext`GridNumber$$), 
@@ -943,6 +965,7 @@ $CellContext`DiagramRange$$, \
 $CellContext`DiagramRange$$/$CellContext`GridNumber$$}]}]}]}], 
            If[$CellContext`GridSPrimeShow$$, {
              Opacity[$CellContext`GridOpacity$$], 
+             
              If[$CellContext`WhichDemo$$ != 
               "Twin \"Paradox\"", {$CellContext`GridSPrimeColorT$$, 
                Thickness[0.0015], 
@@ -1011,8 +1034,8 @@ $CellContext`DiagramRange$$/$CellContext`GridNumber$$}]}]}], {
 $CellContext`UpdateSecondPath$$[]; 
               If[$CellContext`WhichDemo$$ == 
                 "Twin \"Paradox\"", {$CellContext`SPrimeX$$, \
-$CellContext`SPrimeT$$} = {$CellContext`TwinDistance$$ \
-($CellContext`DiagramRange$$/$CellContext`GridNumber$$) 
+$CellContext`SPrimeT$$} = {($CellContext`TwinDistance$$ \
+($CellContext`DiagramRange$$/$CellContext`GridNumber$$)) 
                   Sign[$CellContext`SPrimeV$$], 0}]; If[
                 
                 And[$CellContext`WhichDemo$$ == 
@@ -1041,10 +1064,8 @@ BarnLength$$, 0}], 2], $CellContext`BarnPoleTime$$]]; Null]; Null)& ]],
 , 0.05], 
                     Round[
                     Part[#, 
-                    2] ($CellContext`GridNumber$$/$CellContext`DiagramRange$$)
-                    , 
-                    0.05]}/$CellContext`GridNumber$$) \
-$CellContext`DiagramRange$$; 
+                    2] ($CellContext`GridNumber$$/$CellContext`DiagramRange$$)\
+, 0.05]}/$CellContext`GridNumber$$) $CellContext`DiagramRange$$; 
                If[$CellContext`WhichDemo$$ == 
                  "Time Travel", $CellContext`SPrimeT$$ = 
                  Max[$CellContext`SPrimeT$$, 0]]; $CellContext`Path1V$$ = 
@@ -1115,8 +1136,8 @@ LorentzFactor$$), 0}], 1], 0}, ($CellContext`LengthContDistance$$ =
             If[$CellContext`WhichDemo$$ == "Twin \"Paradox\"", 
              Locator[
               
-              Dynamic[{$CellContext`TwinDistance$$ \
-($CellContext`DiagramRange$$/$CellContext`GridNumber$$) 
+              Dynamic[{($CellContext`TwinDistance$$ \
+($CellContext`DiagramRange$$/$CellContext`GridNumber$$)) 
                 Sign[$CellContext`SPrimeV$$], 
                 0}, ($CellContext`SPrimeX$$ = (
                   Round[Part[#, 
@@ -1134,13 +1155,13 @@ $CellContext`TwinDistance$$ =
              Locator[
               Dynamic[
                $CellContext`LorentzTransform$$[{
-                
                 0, $CellContext`BarnPoleTime$$ \
 ($CellContext`DiagramRange$$/$CellContext`GridNumber$$)}], \
 ($CellContext`BarnPoleTime$$ = Round[Part[
                     $CellContext`LorentzTransformInverse$$[{
                     Part[#, 1], 
                     Part[#, 2]}], 
+                    
                     2] ($CellContext`GridNumber$$/$CellContext`DiagramRange$$)\
 , 0.05]; If[$CellContext`BarnPoleLength$$/$CellContext`LorentzFactor$$ > \
 $CellContext`BarnLength$$, 
@@ -1165,7 +1186,7 @@ $CellContext`DiagramSize$$},
           PlotRange -> {{-$CellContext`DiagramRange$$, \
 $CellContext`DiagramRange$$}, {-$CellContext`DiagramRange$$, \
 $CellContext`DiagramRange$$}} $CellContext`LabelMultiplier$$^2], StandardForm],
-        ImageSizeCache->{770.0000000000001, {382., 388.0000000000001}}]}
+        ImageSizeCache->{700., {348., 352.}}]}
      },
      DefaultBaseStyle->"Column",
      GridBoxAlignment->{"Columns" -> {{Center}}},
@@ -1229,22 +1250,22 @@ $CellContext`DiagramRange$$}} $CellContext`LabelMultiplier$$^2], StandardForm],
           Thickness[0.002], Gray, 
           Table[
            Line[
-            Map[{$CellContext`x$, $CellContext`t$} + # {
-                Sin[$CellContext`a], 
-                
-                Cos[$CellContext`a]} \
-($CellContext`DiagramRange$$/$CellContext`GridNumber$$) $CellContext`r& , {
+            Map[{$CellContext`x$, $CellContext`t$} + ((# {
+                  Sin[$CellContext`a], 
+                  
+                  Cos[$CellContext`a]}) \
+($CellContext`DiagramRange$$/$CellContext`GridNumber$$)) $CellContext`r& , {
              0.8, 0.9}]], {$CellContext`a, 0, 2 Pi, Pi/6}], Black, 
           
           Line[{{$CellContext`x$, $CellContext`t$}, {$CellContext`x$, \
-$CellContext`t$} + 0.7 ReplaceAll[{
-                Sin[$CellContext`a], 
-                
-                Cos[$CellContext`a]}, $CellContext`a -> (
-                 1 + ($CellContext`time$/$CellContext`DiagramRange$$) \
+$CellContext`t$} + ((0.7 ReplaceAll[{
+                  Sin[$CellContext`a], 
+                  
+                  Cos[$CellContext`a]}, $CellContext`a -> (
+                   1 + ($CellContext`time$/$CellContext`DiagramRange$$) \
 ($CellContext`GridNumber$$/($CellContext`GridNumber$$ - 1))) 
-                Pi] ($CellContext`DiagramRange$$/$CellContext`GridNumber$$) \
-$CellContext`r}]}, $CellContext`r -> 0.6]}}, {
+                  Pi]) ($CellContext`DiagramRange$$/$CellContext`GridNumber$$)\
+) $CellContext`r}]}, $CellContext`r -> 0.6]}}, {
     DownValues[$CellContext`LorentzTransform$$] = {HoldPattern[
          $CellContext`LorentzTransform$$[{
            Pattern[$CellContext`x$, 
@@ -1255,9 +1276,9 @@ $CellContext`r}]}, $CellContext`r -> 0.6]}}, {
            Pattern[$CellContext`sign$, 
             Blank[]], 
            1]]] :> {$CellContext`LorentzFactor$$ ($CellContext`x$ + \
-$CellContext`sign$ $CellContext`SPrimeV$$ $CellContext`t$) + \
+($CellContext`sign$ $CellContext`SPrimeV$$) $CellContext`t$) + \
 $CellContext`SPrimeX$$, $CellContext`LorentzFactor$$ ($CellContext`t$ + \
-$CellContext`sign$ $CellContext`SPrimeV$$ $CellContext`x$) + \
+($CellContext`sign$ $CellContext`SPrimeV$$) $CellContext`x$) + \
 $CellContext`SPrimeT$$}}}, {
     DownValues[$CellContext`LorentzTransformInverse$$] = {HoldPattern[
          $CellContext`LorentzTransformInverse$$[{
@@ -1269,10 +1290,10 @@ $CellContext`SPrimeT$$}}}, {
            Pattern[$CellContext`sign$, 
             Blank[]], 
            1]]] :> {$CellContext`LorentzFactor$$ (($CellContext`x$ - \
-$CellContext`SPrimeX$$) - $CellContext`sign$ $CellContext`SPrimeV$$ \
+$CellContext`SPrimeX$$) - ($CellContext`sign$ $CellContext`SPrimeV$$) \
 ($CellContext`t$ - $CellContext`SPrimeT$$)), $CellContext`LorentzFactor$$ \
-(($CellContext`t$ - $CellContext`SPrimeT$$) - $CellContext`sign$ \
-$CellContext`SPrimeV$$ ($CellContext`x$ - $CellContext`SPrimeX$$))}}}, {
+(($CellContext`t$ - $CellContext`SPrimeT$$) - ($CellContext`sign$ \
+$CellContext`SPrimeV$$) ($CellContext`x$ - $CellContext`SPrimeX$$))}}}, {
     DownValues[$CellContext`PadNumber$$] = {HoldPattern[
          $CellContext`PadNumber$$[
           Pattern[$CellContext`n, 
@@ -1294,16 +1315,33 @@ $CellContext`SPrimeT$$) $CellContext`SPrimeV$$)/($CellContext`SPrimeT$$ - \
 $CellContext`SPrimeV$$))]; 
         If[$CellContext`Path2V$$ === Indeterminate, $CellContext`Path2V$$ = 
           0]; Null)}}}]], "Output",
- CellLabel->"Out[1]=",ExpressionUUID->"b854eb79-3f77-47b1-88ed-5a1a5440d30d"]
+ CellLabel->"Out[1]=",ExpressionUUID->"652e00e7-8a21-4c8d-b3aa-a2a12a82cf28"]
 }, {2}]]
 },
-WindowSize->{1024.8, 797.4},
-WindowMargins->{{Automatic, -5.399999999999636}, {Automatic, -0.6}},
-PrivateNotebookOptions->{"FileOutlineCache"->False},
+WindowSize->{1024.2, 791.4},
+WindowMargins->{{1017.5999999999999`, Automatic}, {Automatic, 0}},
 TaggingRules-><|"TryRealOnly" -> False|>,
 TrackCellChangeTimes->False,
-Magnification:>1.1 Inherited,
 FrontEndVersion->"13.0 for Microsoft Windows (64-bit) (February 4, 2022)",
 StyleDefinitions->"Default.nb",
-ExpressionUUID->"25e0c04e-8c89-424f-8fe5-a212d7fc764e"
+ExpressionUUID->"75200689-7925-4e68-a9d7-69c10f92f5a1"
 ]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 252, 5, 28, "Input",ExpressionUUID->"ab6a3ed6-f1b7-4148-8c40-c274e3361445"],
+Cell[835, 29, 60834, 1288, 806, "Output",ExpressionUUID->"652e00e7-8a21-4c8d-b3aa-a2a12a82cf28"]
+}, {2}]]
+}
+]
+*)
+

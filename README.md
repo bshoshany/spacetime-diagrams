@@ -27,4 +27,9 @@ The source code is available in annotated human-readable format in the file [`Sp
 
 If you enjoyed this notebook, please star the [GitHub repository](https://github.com/bshoshany/spacetime-diagrams). If you use this notebook in your teaching, kindly provide your students with a link to the repository. I would also [love to hear from you](mailto:baraksh@gmail.com) about your experience using the notebook, or if you have any suggestions for improvement.
 
-Copyright (c) 2022 Barak Shoshany ([baraksh@gmail.com](mailto:baraksh@gmail.com)) ([https://baraksh.com/](https://baraksh.com/)). Licensed under the [MIT license](LICENSE.txt).
+Copyright (c) 2022 [Barak Shoshany](https://baraksh.com/)  ([baraksh@gmail.com](mailto:baraksh@gmail.com)). Licensed under the [MIT license](LICENSE.txt).
+
+## Version history
+
+* v1.0.1 (2022-06-10)
+    * Fixed a bug that prevented the notebook from working with the free Wolfram Player.

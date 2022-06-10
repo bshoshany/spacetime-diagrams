@@ -1,5 +1,5 @@
 (* An interactive illustration of various effects in special relativity using spacetime diagrams. *)
-(*                                       v1.0.0, 2022-06-05                                       *)
+(*                                       v1.0.1, 2022-06-10                                       *)
 (*               Copyright (c) 2022 Barak Shoshany. Licensed under the MIT license.               *)
 (*                     baraksh@gmail.com | baraksh.com | github.com/bshoshany                     *)
 
